@@ -1,4 +1,4 @@
-# CodeSandbox
+# CodeGameSandbox
 Môi trường chấm mã nguồn tự động dùng cho các cuộc thi lập trình thi đấu, được xây dựng cho hệ điều hành Linux.
 
 ## Tính năng
@@ -69,3 +69,4 @@ main/
 > - `TIME_LIMIT` (không bắt buộc): Giới hạn thời gian chạy của chương trình trong mỗi testcase, tính theo giây.
 
 ## Các dự án có thể sử dụng trình chấm này
+> [CodegameDiscordBot](https://github.com/ShindouAris/CodegameDiscordBot.git) - Discord bot thi đấu lập trình
