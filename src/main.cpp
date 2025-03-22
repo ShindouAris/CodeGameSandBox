@@ -1,4 +1,4 @@
-#define APP_VERSION "1.1-beta"
+#define APP_VERSION "2.0-dev"
 #define LOGO R"(
 __  __            __
 \ \/ /_  ____  __/ /__(_)
