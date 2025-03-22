@@ -6,6 +6,7 @@
 #include "problems.hpp"
 #include "../utils/logging.hpp"
 #include "../utils/env.hpp"
+#include "customexeption.hpp"
 
 namespace data {
 
@@ -15,7 +16,7 @@ namespace data {
 		for (const auto& problem : problem_list) {
 			if (problem.id == id) return &problem;
 		}
-		throw std::runtime_error("Problem ID is not available in this node");
+		throw ProblemNotAvailable("Problem ID is not available in this node");
 	}
 
 	inline Problem load_problem(const std::string& id) {

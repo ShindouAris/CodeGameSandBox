@@ -11,7 +11,8 @@ namespace data::submission_status {
 		MemoryLimitExceeded,
 		RuntimeError,
 		CompilationError,
-		InternalError
+		InternalError,
+		ProblemNotAvailable
 	};
 
 	inline std::string repr(const Enum val) {
@@ -25,6 +26,7 @@ namespace data::submission_status {
 			case RuntimeError: return "RUNTIME_ERROR";
 			case CompilationError: return "COMPILATION_ERROR";
 			case InternalError: return "INTERNAL_ERROR";
+			case ProblemNotAvailable: return "PROBLEM_NOT_AVAILABLE";
 			default: return "UNKNOWN_STATUS";
 		}
 	}

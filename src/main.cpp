@@ -1,4 +1,4 @@
-#define APP_VERSION "2.0-dev"
+#define APP_VERSION "2.1-dev"
 #define LOGO R"(
 __  __            __
 \ \/ /_  ____  __/ /__(_)
@@ -31,6 +31,19 @@ namespace api {
         logger::setHandler(new SpdlogLogger(logging::create_logger("crow")));
         SimpleApp app;
         app.loglevel(LogLevel::Warning);
+        CROW_WEBSOCKET_ROUTE(app, "/ws")
+        .onopen([](crow::websocket::connection& conn) {
+        CROW_LOG_INFO << "WebSocket connected!";
+        })
+        .onmessage([](crow::websocket::connection& conn, const std::string& data, bool is_binary) {
+            if (data == "ping") {
+                conn.send_text("pong");
+                logging::info("Received ping, sent pong");
+            }
+        })
+        .onclose([](crow::websocket::connection& conn, const std::string& reason, const uint16_t code) {
+            CROW_LOG_INFO << "WebSocket disconnected: " << reason << ", With code: " << code;
+        });
         CROW_ROUTE(app, "/version").methods(HTTPMethod::GET)([]() { return APP_VERSION; });
         CROW_ROUTE(app, "/modules").methods(HTTPMethod::GET)(get_all_modules);
         CROW_ROUTE(app, "/problems").methods(HTTPMethod::GET)(get_all_problems);

@@ -45,7 +45,7 @@ namespace api {
 				handler->run();
 				submission = handler->submission;
 			} catch (const std::exception& e) {
-				submission.status = data::submission_status::InternalError;
+				submission.status = data::submission_status::ProblemNotAvailable;
 				submission.message = e.what();
 			}
 
