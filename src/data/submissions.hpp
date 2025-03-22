@@ -13,6 +13,7 @@ namespace data {
 		std::string target_module;
 		submission_status::Enum status = submission_status::Queued;
 		std::string message;
+		std::string running_time = "0";
 
 		Submission() = default;
 

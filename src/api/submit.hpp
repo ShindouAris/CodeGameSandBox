@@ -55,7 +55,8 @@ namespace api {
 		nlohmann::json j = {
 			{"id", submission.id},
 			{"status", repr(submission.status)},
-			{"message", submission.message}
+			{"message", submission.message},
+			{"running_time", submission.running_time}
 		};
 
 		crow::response resp = {200, j.dump()};

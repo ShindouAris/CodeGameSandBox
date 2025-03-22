@@ -9,6 +9,7 @@
 #include "../data/submissions.hpp"
 #include "../utils/logging.hpp"
 #include "../utils/random.hpp"
+#include "chrono"
 
 namespace modules {
 
@@ -51,14 +52,14 @@ namespace modules {
 			for (const auto& test_case : problem.test_cases) {
 				tc_count++;
 				test(test_case.input, test_case.output);
-				if (submission.status == data::submission_status::WrongAnswer) submission.message += "\nWA on test case " + std::to_string(tc_count);
+				if (submission.status == data::submission_status::WrongAnswer) submission.message += "WA on test case " + std::to_string(tc_count);
 				else if (submission.status == data::submission_status::TimeLimitExceeded) submission.message = "TLE on test case " + std::to_string(tc_count);
 				else if (submission.status == data::submission_status::MemoryLimitExceeded) submission.message = "MLE on test case " + std::to_string(tc_count);
 				if (submission.status != data::submission_status::Running) goto end_run;
 			}
 			submission.status = data::submission_status::Accepted;
 			submission.message = "All test cases passed";
-			end_run:
+			 end_run:
 			logger->info("Submission {}: {} ({})", submission.id, repr(submission.status), submission.message);
 		}
 
