@@ -1,4 +1,4 @@
-#define APP_VERSION "2.1-dev"
+#define APP_VERSION "2.2-dev"
 #define LOGO R"(
 __  __            __
 \ \/ /_  ____  __/ /__(_)
@@ -33,16 +33,18 @@ namespace api {
         app.loglevel(LogLevel::Warning);
         CROW_WEBSOCKET_ROUTE(app, "/ws")
         .onopen([](crow::websocket::connection& conn) {
+            logging::info("Client from " +  conn.get_remote_ip() + " connected via WebSocket");
         CROW_LOG_INFO << "WebSocket connected!";
         })
         .onmessage([](crow::websocket::connection& conn, const std::string& data, bool is_binary) {
             if (data == "ping") {
                 conn.send_text("pong");
-                logging::info("Received ping, sent pong");
+                logging::debug("Received ping from client, sent pong");
             }
         })
         .onclose([](crow::websocket::connection& conn, const std::string& reason, const uint16_t code) {
-            CROW_LOG_INFO << "WebSocket disconnected: " << reason << ", With code: " << code;
+
+            logging::warn("WebSocket disconnected with code: " + std::to_string(code));
         });
         CROW_ROUTE(app, "/version").methods(HTTPMethod::GET)([]() { return APP_VERSION; });
         CROW_ROUTE(app, "/modules").methods(HTTPMethod::GET)(get_all_modules);

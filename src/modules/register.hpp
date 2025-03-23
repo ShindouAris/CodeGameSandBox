@@ -8,7 +8,6 @@
 #include "abstract.hpp"
 #include "c.hpp"
 #include "cpp.hpp"
-#include "rust.hpp"
 #include "python.hpp"
 
 namespace modules {
@@ -39,11 +38,6 @@ namespace modules {
                 return new Cpp(submission, problem);
             });
         }
-        // for (const auto i : {"rust", "rust182"}) {
-        //     register_handler(i, [](const data::Submission* submission, const data::Problem* problem) -> IModules* {
-        //         return new Rust(submission, problem);
-        //     });
-        // }
         for (const auto i : {"python3"}) {
             register_handler(i, [](const data::Submission* submission, const data::Problem* problem) -> IModules* {
                 return new Python(submission, problem);

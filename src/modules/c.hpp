@@ -36,7 +36,7 @@ namespace modules {
 		void test(const std::string& input, const std::string& output) override {
 			utils::RunGuard run_guard(problem.time_limit_secs, problem.memory_limit_mb);
 			std::stringstream output_stream;
-			auto start = std::chrono::high_resolution_clock::now();
+			const auto start = std::chrono::high_resolution_clock::now();
 			run_guard.run((work_dir + "/main.out").c_str(), input, output_stream);
 			if (WIFEXITED(run_guard.status)) {
 				if (WEXITSTATUS(run_guard.status) == EXIT_SUCCESS) {
@@ -46,8 +46,8 @@ namespace modules {
 						submission.message = "Expected: " + output.substr(0, 64) + " , Got: " + (output_stream.str()).substr(0, 64);
 					}
 					else {
-						auto end = std::chrono::high_resolution_clock::now();
-						auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+						const auto end = std::chrono::high_resolution_clock::now();
+						const auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
 						submission.running_time = std::to_string(duration);
 					}
 				}

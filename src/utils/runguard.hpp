@@ -77,7 +77,7 @@ namespace utils {
 
 
                 std::thread input_thread([&] {
-                    write(pipe_in[1], input.c_str(), input.size());
+                    (void) write(pipe_in[1], input.c_str(), input.size());
                     close(pipe_in[1]);
                 });
 

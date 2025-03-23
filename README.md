@@ -7,8 +7,9 @@ Môi trường chấm mã nguồn tự động dùng cho các cuộc thi lập t
 - Hỗ trợ giới hạn tài nguyên (bộ nhớ, thời gian chạy) cho môi trường chấm.
 
 ## Cài đặt
-- Build: ...
-- Docker: [imyuuki/codesandbox](https://hub.docker.com/r/imyuuki/codesandbox/tags)
+- Build: ¯\\\_(ツ)_/¯ 
+- Docker: [chisadin/codesandbox](https://hub.docker.com/repository/docker/chisadin/codesandbox/tags)
+- Docker (Original ver by yuuki): [imyuuki/codesandbox](https://hub.docker.com/r/imyuuki/codesandbox/tags)
 
 ## Cấu hình máy chủ HTTP
 Sử dụng các biến môi trường sau:
@@ -33,8 +34,16 @@ Sử dụng các biến môi trường sau:
 
 > Phản hồi: `application/json`
 > - `id`(string): ID yêu cầu chấm
-> - `status` (enum): Accepted, WrongAnswer, TimeLimitExceeded, MemoryLimitExceeded, RuntimeError, CompilationError, InternalError
+> - `status` (enum): Accepted, WrongAnswer, TimeLimitExceeded, MemoryLimitExceeded, RuntimeError, CompilationError, ProblemNotAvailable, InternalError
 > - `message` (string): Phản hồi từ trình chấm
+> - `running_time` (float): Thời gian chạy của chương trình (giây)
+
+- `WebSocket /ws`: Kết nối WebSocket ¯\\\_(ツ)_/¯
+>  Yêu cầu: `erm... websocket api ?`
+> - `message`: ping
+
+> Phản hồi: `pong`
+
 
 ## Cấu hình bài chấm
 Mỗi bài chấm cần được đặt trong thư mục `problems/<problem_id>` so với thư mục chạy chương trình.

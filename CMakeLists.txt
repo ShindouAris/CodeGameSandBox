@@ -11,6 +11,7 @@ add_executable(CodeSandbox
         src/data/submissions.hpp
         src/data/enums.hpp
         src/data/problems.hpp
+        src/data/customexeption.hpp
 
         src/utils/logging.hpp
         src/utils/env.hpp
@@ -21,7 +22,6 @@ add_executable(CodeSandbox
         src/modules/c.hpp
         src/modules/abstract.hpp
         src/modules/cpp.hpp
-        src/modules/rust.hpp
         src/modules/python.hpp
         src/modules/register.hpp
 
