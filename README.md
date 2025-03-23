@@ -8,7 +8,7 @@ Môi trường chấm mã nguồn tự động dùng cho các cuộc thi lập t
 
 ## Cài đặt
 - Build: ¯\\\_(ツ)_/¯ 
-- Docker: [chisadin/codesandbox](https://hub.docker.com/repository/docker/chisadin/codesandbox/tags)
+- Docker: [chisadin/codesandbox](https://hub.docker.com/repository/docker/chisadin/codesandbox/tags) `use 2.2 dev version`
 - Docker (Original ver by yuuki): [imyuuki/codesandbox](https://hub.docker.com/r/imyuuki/codesandbox/tags)
 
 ## Cấu hình máy chủ HTTP
